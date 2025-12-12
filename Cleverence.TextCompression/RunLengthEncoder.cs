@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +14,11 @@ namespace Cleverence.TextCompression
     /// </summary>
     public sealed class RunLengthEncoder : IStringTransformer
     {
+        /// <summary>
+        /// Max length for string in .NET
+        /// </summary>
+        public const int MaxStringLength = 0x3FFFFFDF;
+
         /// <summary>
         /// Validates that the input string contains only allowed characters based on the compression state.
         /// </summary>
@@ -60,6 +66,33 @@ namespace Cleverence.TextCompression
         }
 
         /// <summary>
+        /// Appends a specified character a given number of times to a <see cref="StringBuilder"/>,
+        /// throwing an <see cref="OverflowException"/> if the resulting string length exceeds a predefined maximum <see cref="MaxStringLength"/>.
+        /// </summary>
+        /// <remarks>
+        /// This method is aggressively inlined by the JIT compiler for performance optimization.
+        /// It checks the length *before* appending to prevent exceeding the allowed maximum length defined by <see cref="MaxStringLength"/>.
+        /// </remarks>
+        /// <param name="sb">The <see cref="StringBuilder"/> to append the characters to.</param>
+        /// <param name="c">The character to append.</param>
+        /// <param name="count">The number of times to append the character. Defaults to 1.</param>
+        /// <exception cref="OverflowException">
+        /// Thrown if appending <paramref name="count"/> characters to the current length of <paramref name="sb"/>
+        /// would result in a length greater than <see cref="MaxStringLength"/>.
+        /// </exception>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void AppendWithThrow(StringBuilder sb, char c, int count = 1)
+        {
+            if(sb.Length +  count > MaxStringLength)
+            {
+                throw new OverflowException(
+                            $"Decompressed string exceeds the maximum allowed length of {MaxStringLength}. " +
+                            $"Current result length is {sb.Length}, attempting to add additional {count} characters.");
+            }
+            sb.Append(c, count);
+        }
+
+        /// <summary>
         /// Compresses the input string using Run-Length Encoding.
         /// The output format is: character followed by its count (e.g., "aaabbc" becomes "a3b2c1").
         /// </summary>
@@ -91,7 +124,11 @@ namespace Cleverence.TextCompression
                 }
 
                 result.Append(currentChar);
-                result.Append(count);
+
+                if(count > 1)
+                {
+                    result.Append(count);
+                }
 
                 i = j;
             }
@@ -127,7 +164,7 @@ namespace Cleverence.TextCompression
 
                 if (i >= compressedInput.Length)
                 {
-                    result.Append(currentChar);
+                    AppendWithThrow(result, currentChar);
                     break;
                 }
 
@@ -141,13 +178,14 @@ namespace Cleverence.TextCompression
 
                 if (countString.Length == 0)
                 {
-                    result.Append(currentChar);
+                    AppendWithThrow(result, currentChar);
                     continue;
                 }
 
                 if (int.TryParse(countString.ToString(), out int count))
                 {
-                    result.Append(currentChar, count);
+                    if (count == 0) throw new ArgumentException($"Count can`t be zero in compressed data: {countString}");
+                    AppendWithThrow(result, currentChar, count);
                 }
                 else
                 {
