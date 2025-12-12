@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Cleverence.TextCompression.ConsoleApp": {
+      "commandName": "Project",
+      "commandLineArgs": "list"
+    }
+  }
+}
