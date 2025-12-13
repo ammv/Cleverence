@@ -39,5 +39,25 @@ namespace Cleverence.Network
                 _count += value;
             }
         }
+
+#if DEBUG
+        public static int GetCountDelay(TimeSpan delay)
+        {
+            using (_lock.ReadLock())
+            {
+                Thread.Sleep(delay);
+                return _count;
+            }
+        }
+
+        public static void AddToCountDelay(int value, TimeSpan delay)
+        {
+            using (_lock.WriteLock())
+            {
+                Thread.Sleep(delay);
+                _count += value;
+            }
+        }
+#endif
     }
 }
