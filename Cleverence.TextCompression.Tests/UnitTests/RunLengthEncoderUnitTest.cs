@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace Cleverence.TextCompression.Tests;
+﻿namespace Cleverence.TextCompression.Tests;
 
 public class RunLengthEncoderUnitTest
 {

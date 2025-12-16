@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Cleverence.TextCompression
 {
@@ -83,7 +79,7 @@ namespace Cleverence.TextCompression
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void AppendWithThrow(StringBuilder sb, char c, int count = 1)
         {
-            if(sb.Length +  count > MaxStringLength)
+            if (sb.Length + count > MaxStringLength)
             {
                 throw new OverflowException(
                             $"Decompressed string exceeds the maximum allowed length of {MaxStringLength}. " +
@@ -125,7 +121,7 @@ namespace Cleverence.TextCompression
 
                 result.Append(currentChar);
 
-                if(count > 1)
+                if (count > 1)
                 {
                     result.Append(count);
                 }
