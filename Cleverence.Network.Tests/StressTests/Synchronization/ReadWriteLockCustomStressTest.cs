@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 
 namespace Cleverence.Network.Tests;
 
+[TestFixture, Category("Stress")]
 public class ReadWriteLockCustomStressTest
 {
     [Test]

@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json.Linq;
-using NUnit.Framework.Interfaces;
+﻿using NUnit.Framework;
 using System.Collections.Concurrent;
-using System.Linq;
 using System.Reflection;
 
 namespace Cleverence.Network.Tests;
 
+[TestFixture, Category("Stress")]
 public class ServerStressTest
 {
     private const int RepeatCount = 100;

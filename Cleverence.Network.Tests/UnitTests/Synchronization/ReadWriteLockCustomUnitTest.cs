@@ -2,6 +2,7 @@
 
 namespace Cleverence.Network.Tests;
 
+[TestFixture]
 public class ReadWriteLockCustomUnitTest
 {
     [Test]

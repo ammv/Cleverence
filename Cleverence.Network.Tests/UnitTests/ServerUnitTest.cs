@@ -1,6 +1,3 @@
-using NUnit.Framework;
-using System.Reflection;
-
 namespace Cleverence.Network.Tests;
 
 [TestFixture]
@@ -11,8 +8,8 @@ public class ServerUnitTest
     [SetUp]
     public void Setup()
     {
-        var countFieldAccessor = typeof(Server).GetField("_count", 
-            System.Reflection.BindingFlags.Static | 
+        var countFieldAccessor = typeof(Server).GetField("_count",
+            System.Reflection.BindingFlags.Static |
             System.Reflection.BindingFlags.NonPublic);
 
         ArgumentNullException.ThrowIfNull(countFieldAccessor);
