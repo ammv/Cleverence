@@ -41,7 +41,7 @@ public class Program
         listener.Start();
 
 #if DEBUG
-        Console.WriteLine($"Server started on port 8080 with delay {_delay.Milliseconds}ms. Waiting for clients...");
+        Console.WriteLine($"Server started on port 8080 with delay {_delay.TotalMilliseconds}ms. Waiting for clients...");
 #else
         Console.WriteLine("Server started on port 8080. Waiting for clients...");
 #endif
