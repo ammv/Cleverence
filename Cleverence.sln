@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleverence.Network.TcpServe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleverence.Network.TcpClient", "Cleverence.Network.TcpClient\Cleverence.Network.TcpClient.csproj", "{0208D0C0-6C2B-45E2-842A-9B4A0F26DD21}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleverence.LogTransform", "Cleverence.LogTransform\Cleverence.LogTransform.csproj", "{DEEFF5FF-8499-45A5-87D8-09942BAE1CDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleverence.LogTransform.Tests", "Cleverence.LogTransform.Tests\Cleverence.LogTransform.Tests.csproj", "{C5B7A434-FF09-4405-8E19-AAD55F4F294A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +63,14 @@ Global
 		{0208D0C0-6C2B-45E2-842A-9B4A0F26DD21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0208D0C0-6C2B-45E2-842A-9B4A0F26DD21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0208D0C0-6C2B-45E2-842A-9B4A0F26DD21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEEFF5FF-8499-45A5-87D8-09942BAE1CDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEEFF5FF-8499-45A5-87D8-09942BAE1CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEEFF5FF-8499-45A5-87D8-09942BAE1CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEEFF5FF-8499-45A5-87D8-09942BAE1CDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5B7A434-FF09-4405-8E19-AAD55F4F294A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5B7A434-FF09-4405-8E19-AAD55F4F294A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5B7A434-FF09-4405-8E19-AAD55F4F294A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5B7A434-FF09-4405-8E19-AAD55F4F294A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +84,8 @@ Global
 		{D447BB7A-4691-4B82-9DD4-17E271ECD652} = {D36D6251-1237-4E62-86E3-F8CAF614BB4E}
 		{19FDCD71-C717-4C9A-85AE-D1D0E679CD8F} = {D447BB7A-4691-4B82-9DD4-17E271ECD652}
 		{0208D0C0-6C2B-45E2-842A-9B4A0F26DD21} = {D447BB7A-4691-4B82-9DD4-17E271ECD652}
+		{DEEFF5FF-8499-45A5-87D8-09942BAE1CDF} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
+		{C5B7A434-FF09-4405-8E19-AAD55F4F294A} = {0892A5B9-3418-46FB-A5EE-FF67546E9DB9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E3C9D13E-8380-4D4F-ADD7-F8ED2F40ED1B}
