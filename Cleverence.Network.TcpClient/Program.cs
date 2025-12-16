@@ -1,6 +1,5 @@
 ﻿using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 
 /// <summary>
 /// A simple interactive TCP client for the Counter Server.
